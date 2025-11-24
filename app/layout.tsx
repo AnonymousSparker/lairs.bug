@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google"; // Switched to JetBrains Mono
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import { ThemeProvider } from "@/providers/theme-provider";
 
-const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
+// Load the Monospace font
+const jetbrainsMono = JetBrains_Mono({ 
+  subsets: ["latin"], 
+  variable: '--font-jetbrains',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: "Developer & Designer Portfolio",
-  description: "Portfolio of a high-skill web designer and developer.",
+  title: "Developer Portfolio",
+  description: "Full-stack engineer and designer.",
 };
 
 export default function RootLayout({
@@ -18,18 +22,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <main className="flex-grow">
-              {children}
-            </main>
-            <footer className="py-6 text-center text-sm text-slate-500 dark:text-slate-600 border-t border-slate-200 dark:border-slate-900 mt-20">
-              <p>© {new Date().getFullYear()} Built with Next.js 16, Tailwind & Firebase.</p>
-            </footer>
-          </div>
-        </ThemeProvider>
+      <body className={`${jetbrainsMono.variable} font-mono bg-white text-[#0B132B]`}>
+        {/* Removed ThemeProvider to enforce single theme */}
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <footer className="py-8 text-center text-sm text-[#3A506B] border-t border-[#3A506B]/20 mt-20">
+            <p className="font-mono">
+              // © {new Date().getFullYear()} Built with Next.js 16 & Tailwind.
+            </p>
+          </footer>
+        </div>
       </body>
     </html>
   );

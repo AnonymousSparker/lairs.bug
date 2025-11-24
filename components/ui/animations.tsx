@@ -2,14 +2,12 @@
 
 import { motion } from "framer-motion";
 
-// Simulating "React Bits" lightweight, snappy animations
-// Focus: Spring physics, low duration, high damping
-
+// Updated FadeIn to use 'animate' for immediate visibility on mount
+// rather than relying solely on 'whileInView' which can sometimes lag on navigation.
 export const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => (
   <motion.div
     initial={{ opacity: 0, y: 10 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
+    animate={{ opacity: 1, y: 0 }} // Changed from whileInView to animate for reliable page loads
     transition={{ duration: 0.4, delay, ease: "easeOut" }}
     className={className}
   >
@@ -38,6 +36,8 @@ export const HoverCard = ({ children, className = "" }: { children: React.ReactN
   </motion.div>
 );
 
+// This component renders a motion.button. 
+// Do NOT put another <button> inside this. Use it AS the button.
 export const ClickScale = ({ children, onClick, className = "" }: { children: React.ReactNode, onClick?: () => void, className?: string }) => (
   <motion.button
     whileTap={{ scale: 0.9 }}
