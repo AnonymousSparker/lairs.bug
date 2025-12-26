@@ -136,7 +136,16 @@ export default function Home() {
           </FadeIn>
         </div>
       </section>
-
+      <script>
+  atOptions = {
+    'key' : '8af953e97e659d53458adbdfb6a09f64',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/8af953e97e659d53458adbdfb6a09f64/invoke.js"></script>
     </div>
   );
 }
